@@ -14,13 +14,17 @@ load_dotenv() # reads and gives access to .env file
 
 def create_app():
     app = Flask(__name__)
+    
+    database_url = os.getenv("DATABASE_URL")
+    if database_url:
+        app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    else:
+        BASE_DIR = Path(__file__).resolve().parent.parent
+        DATABASE_PATH = BASE_DIR / "data" / "students.db"
 
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    DATABASE_PATH = BASE_DIR / "data" / "students.db"
-
-    app.config["SQLALCHEMY_DATABASE_URI"] = ( # use sqlite and given db file
-        f"sqlite:///{DATABASE_PATH.as_posix()}" # as_posix to convert \ into /
-    )
+        app.config["SQLALCHEMY_DATABASE_URI"] = ( # use sqlite and given db file
+            f"sqlite:///{DATABASE_PATH.as_posix()}" # as_posix to convert \ into /
+        )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False # Do not use SQLAlchemy modification tracking system
 
     app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")

@@ -5,3 +5,4 @@ Flask-JWT-Extended
 Flask-Migrate
 pytest
 gunicorn
+psycopg2-binary
