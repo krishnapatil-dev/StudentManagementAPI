@@ -4,3 +4,4 @@ python-dotenv
 Flask-JWT-Extended
 Flask-Migrate
 pytest
+gunicorn
