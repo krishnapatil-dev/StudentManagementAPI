@@ -51,16 +51,12 @@ def get_courses():
     })
 
 
-@course_bp.route(
-    "/courses/<int:course_id>",
-    methods=["GET"]
+@course_bp.route("/courses/<int:course_id>",methods=["GET"]
 )
 @jwt_required()
 def get_course(course_id):
 
-    course = service.get_course_by_id(
-        course_id
-    )
+    course = service.get_course_by_id(course_id)
 
     if course is None:
         return jsonify({

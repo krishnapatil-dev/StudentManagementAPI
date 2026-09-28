@@ -13,7 +13,7 @@ class StudentRepository:
             db.session.add(student)
             db.session.commit()
 
-            return student.id
+            return student
 
         except IntegrityError:
             db.session.rollback()

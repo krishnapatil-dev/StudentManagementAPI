@@ -39,7 +39,7 @@ class UserService:
             raise ValidationError('Invalid username or password')
 
         if not check_password_hash(user.password, given_password):
-            raise ValidationError('Invalid username or password')
+            raise ValidationError('Invalid password')
 
         token = create_access_token(identity=str(user.id))
 

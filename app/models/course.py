@@ -1,5 +1,3 @@
-from enum import unique
-
 from app.database.db import db
 
 class Course(db.Model):

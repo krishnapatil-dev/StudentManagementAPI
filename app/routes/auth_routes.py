@@ -1,6 +1,4 @@
 from flask import Blueprint, jsonify, request
-from flask_jwt_extended import create_access_token
-from werkzeug.security import check_password_hash
 from app.services.user_service import UserService
 from app.exceptions.errors import ValidationError
 

@@ -34,10 +34,7 @@ class StudentService:
             marks=marks
         )
 
-        student_id = self.repository.create(student)
-        student.id = student_id
-
-        return student
+        return self.repository.create(student)
 
     def get_all_students(self, page, limit):
         return self.repository.get_all(page, limit)
